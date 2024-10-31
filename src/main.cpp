@@ -1,4 +1,5 @@
-#include "chunk.h"
+#include "chunk/chunk.h"
+#include "string_chunk/string_chunk.h"
 
 int main() {
     // Read file data into memory

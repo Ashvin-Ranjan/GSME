@@ -2,11 +2,6 @@
 
 // Format information taken from: https://github.com/panzi/cook-serve-hoomans/blob/master/fileformat.md
 
-// Size is stored in little endian format right after the identifier
-u_int32_t to_size(u_int8_t* data) {
-    return (u_int32_t)data[0] + ((u_int32_t)data[1] << 8) + ((u_int32_t)data[2] << 16) + ((u_int32_t)data[3] << 24);
-}
-
 // It is important to make sure this doesn't go out of bounds of the buffer
 // otherwise it will probably segfault
 std::vector<Chunk> locate_chunks(u_int8_t* data, u_int32_t size) {
@@ -18,7 +13,7 @@ std::vector<Chunk> locate_chunks(u_int8_t* data, u_int32_t size) {
 
     Chunk form = {
         { data[0], data[1], data[2], data[3] },
-        to_size(data+4),
+        *((u_int32_t*)data + 1),
         data,
     };
 
@@ -34,7 +29,7 @@ std::vector<Chunk> locate_chunks(u_int8_t* data, u_int32_t size) {
     while (offset < size - 8) { // It is size - 8 because 8 bytes are read from the start
         Chunk chunk = {
             { data[0], data[1], data[2], data[3] },
-            to_size(data+4),
+            *((u_int32_t*)data + 1),
             data,
         };
 
@@ -49,4 +44,13 @@ std::vector<Chunk> locate_chunks(u_int8_t* data, u_int32_t size) {
 
 std::string ident_to_string(char ident[4]) {
     return std::string(ident, 4);
+}
+
+bool compare_ident(char ident[4], const char* string) {
+    for (int i = 0; i < 4; i++) {
+        if (ident[i] != string[i]) {
+            return false;
+        }
+    }
+    return true;
 }
