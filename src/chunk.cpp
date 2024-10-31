@@ -1,10 +1,10 @@
-#include "chunk_detector.h"
+#include "chunk.h"
 
 // Format information taken from: https://github.com/panzi/cook-serve-hoomans/blob/master/fileformat.md
 
 // Size is stored in little endian format right after the identifier
 u_int32_t to_size(u_int8_t* data) {
-    return (u_int32_t)data[0] + (u_int32_t)data[1] << 8 + (u_int32_t)data[2] << 16 + (u_int32_t)data[3] << 24;
+    return (u_int32_t)data[0] + ((u_int32_t)data[1] << 8) + ((u_int32_t)data[2] << 16) + ((u_int32_t)data[3] << 24);
 }
 
 // It is important to make sure this doesn't go out of bounds of the buffer
@@ -38,6 +38,15 @@ std::vector<Chunk> locate_chunks(u_int8_t* data, u_int32_t size) {
             data,
         };
 
-        data += chunk.size; // Move to the first actual chunk
+        chunks.push_back(chunk);
+
+        data += chunk.size + 8;
+        offset += chunk.size + 8;
     }
+
+    return chunks;
+}
+
+std::string ident_to_string(char ident[4]) {
+    return std::string(ident, 4);
 }
