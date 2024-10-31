@@ -2,3 +2,4 @@ data.win
 game_files/
 build/
 .vscode/
+.DS_Store
