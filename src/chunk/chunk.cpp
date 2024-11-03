@@ -12,7 +12,7 @@ std::vector<Chunk> locate_chunks(u_int8_t* data, u_int32_t size) {
     std::vector<Chunk> chunks;
 
     Chunk form = {
-        { data[0], data[1], data[2], data[3] },
+        { (char)data[0], (char)data[1], (char)data[2], (char)data[3] },
         *((u_int32_t*)data + 1),
         data,
     };
@@ -28,7 +28,7 @@ std::vector<Chunk> locate_chunks(u_int8_t* data, u_int32_t size) {
 
     while (offset < size - 8) { // It is size - 8 because 8 bytes are read from the start
         Chunk chunk = {
-            { data[0], data[1], data[2], data[3] },
+            { (char)data[0], (char)data[1], (char)data[2], (char)data[3] },
             *((u_int32_t*)data + 1),
             data,
         };

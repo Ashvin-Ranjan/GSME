@@ -3,6 +3,12 @@
 
 #include "../chunk/chunk.h"
 
+#include <unordered_map>
+
+static std::unordered_map<u_int32_t, std::string> string_map;
+
 void dump_strings(Chunk* string_chunk);
+
+void load_strings(Chunk* string_chunk);
 
 #endif

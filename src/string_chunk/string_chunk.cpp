@@ -1,4 +1,12 @@
 #include "string_chunk.h"
+#include "../main.h"
+
+#include <format>
+
+std::string load_string(u_int32_t absolute_position) {
+    // An additional 4 is added to skip over the length parameter
+    return std::string((char*)(global_data.file_start + absolute_position + 4)); 
+}
 
 // This is only to be used for testing purposes, hence the really horrible code
 void dump_strings(Chunk* string_chunk) {
@@ -17,5 +25,27 @@ void dump_strings(Chunk* string_chunk) {
         if (string_start - string_chunk->start > string_chunk->size) {
             throw std::out_of_range("Strings reach out of range of chunk");
         }
+    }
+}
+
+void load_strings(Chunk* string_chunk) {
+    if (!compare_ident(string_chunk->ident, "STRG")) {
+        throw std::invalid_argument(
+            std::format("String chunk supplied does not have identifier `STRG`, instead given %s", std::string(string_chunk->ident, 4))
+        );
+    }
+
+    int num_strings = *((u_int32_t*)string_chunk->start + 2);
+
+    u_int32_t* string_pointer = (u_int32_t*)string_chunk->start + 3;
+
+    for (int i = 0; i < num_strings; i++) {
+        if ((u_int8_t*)string_pointer - string_chunk->start >= string_chunk->size - 8) {
+            throw std::invalid_argument(
+                std::format("String pointer points to %x, which is out of bounds of `STRG`", (u_int8_t*)string_pointer - global_data.file_start)
+            );
+        }
+        string_map[*string_pointer] = load_string(*string_pointer);
+        string_pointer++;
     }
 }
