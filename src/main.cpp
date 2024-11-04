@@ -4,9 +4,15 @@
 
 GlobalGameData global_data;
 
-int main() {
+int main(int argc, const char * argv[]) {
+    const char* file;
+    if (argc == 1) {
+        file = "data.win";
+    } else {
+        file = argv[1];
+    }
     // Read file data into memory
-    FILE *f = fopen("data.win", "rb");
+    FILE *f = fopen(file, "rb");
     fseek(f, 0, SEEK_END);
     long fsize = ftell(f);
     fseek(f, 0, SEEK_SET);

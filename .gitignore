@@ -1,4 +1,4 @@
-data.win
+*.win
 game_files/
 build/
 .vscode/
