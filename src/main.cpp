@@ -1,6 +1,7 @@
 #include "main.h"
 #include "chunk/chunk.h"
 #include "string_chunk/string_chunk.h"
+#include "gen8_chunk/gen8_chunk.h"
 
 GlobalGameData global_data;
 
@@ -31,7 +32,11 @@ int main(int argc, const char * argv[]) {
         if (compare_ident(c.ident, "STRG")) {
             load_strings(&c);
         }
+        if (compare_ident(c.ident, "GEN8")) {
+            load_game_info(&c);
+        }
     }
+    print_game_info(true);
 
     // Free file data from memory when done
     free(data_file);

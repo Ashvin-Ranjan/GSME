@@ -3,6 +3,8 @@
 
 #include <format>
 
+std::unordered_map<u_int32_t, std::string> string_map;
+
 std::string load_string(u_int32_t absolute_position) {
     // An additional 4 is added to skip over the length parameter
     return std::string((char*)(global_data.file_start + absolute_position + 4)); 
@@ -41,7 +43,7 @@ void load_strings(Chunk* string_chunk) {
 
     for (int i = 0; i < num_strings; i++) {
         if ((u_int8_t*)string_pointer - string_chunk->start >= string_chunk->size - 8) {
-            throw std::invalid_argument(
+            throw std::out_of_range(
                 std::format("String pointer points to %x, which is out of bounds of `STRG`", (u_int8_t*)string_pointer - global_data.file_start)
             );
         }

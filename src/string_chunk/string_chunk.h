@@ -5,7 +5,7 @@
 
 #include <unordered_map>
 
-static std::unordered_map<u_int32_t, std::string> string_map;
+extern std::unordered_map<u_int32_t, std::string> string_map;
 
 void dump_strings(Chunk* string_chunk);
 
