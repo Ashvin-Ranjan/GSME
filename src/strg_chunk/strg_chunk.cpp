@@ -1,5 +1,6 @@
-#include "string_chunk.h"
+#include "strg_chunk.h"
 #include "../main.h"
+#include "../utils/utils.h"
 
 #include <format>
 
@@ -42,12 +43,7 @@ void load_strings(Chunk* string_chunk) {
     u_int32_t* string_pointer = (u_int32_t*)string_chunk->start + 3;
 
     for (int i = 0; i < num_strings; i++) {
-        if ((u_int8_t*)string_pointer - string_chunk->start >= string_chunk->size - 8) {
-            throw std::out_of_range(
-                std::format("String pointer points to %x, which is out of bounds of `STRG`", (u_int8_t*)string_pointer - global_data.file_start)
-            );
-        }
-        string_map[*string_pointer] = load_string(*string_pointer);
-        string_pointer++;
+        u_int32_t address = read_safe(string_pointer, string_chunk);
+        string_map[address + 4] = load_string(address);
     }
 }

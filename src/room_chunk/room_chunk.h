@@ -30,6 +30,7 @@ struct Room {
     u_int32_t name_pointer;
     u_int32_t caption_pointer;
     u_int32_t width; u_int32_t height;
+    u_int32_t speed;
     u_int32_t background_color;
     u_int32_t creation_code_id;
     u_int32_t flags; // TODO: Make enum
@@ -39,8 +40,6 @@ struct Room {
 
 void load_rooms(Chunk* room_chunk);
 
-Room read_room(u_int32_t offset);
-
-
+Room read_room(u_int32_t offset, Chunk* room_chunk);
 
 #endif

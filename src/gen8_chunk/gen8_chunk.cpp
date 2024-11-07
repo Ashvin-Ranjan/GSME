@@ -1,6 +1,6 @@
 #include "gen8_chunk.h"
 #include "../utils/utils.h"
-#include "../string_chunk/string_chunk.h"
+#include "../strg_chunk/strg_chunk.h"
 
 #include <format>
 
@@ -93,14 +93,13 @@ void load_game_info(Chunk* gen8_chunk) {
     game_info.disable_debug = read_safe((bool*&)reader, gen8_chunk);
     game_info.format_id = read_safe(reader, gen8_chunk);
     game_info.unknown = read_safe((u_int16_t*&)reader, gen8_chunk);
-    // NOTE: For some reason the pointers to the strings here passes over the length parameter
-    game_info.filename_pointer = read_safe((u_int32_t*&)reader, gen8_chunk)-4;
-    game_info.config_pointer = read_safe((u_int32_t*&)reader, gen8_chunk)-4;
+    game_info.filename_pointer = read_safe((u_int32_t*&)reader, gen8_chunk);
+    game_info.config_pointer = read_safe((u_int32_t*&)reader, gen8_chunk);
     game_info.last_object_id = read_safe((u_int32_t*&)reader, gen8_chunk); // TODO: Fix bug here
     game_info.last_tile_id = read_safe((u_int32_t*&)reader, gen8_chunk);
     game_info.game_id = read_safe((u_int32_t*&)reader, gen8_chunk);
     set_uuid_pointer(game_info.legacy_uuid, read_safe((__uint128_t*&)reader, gen8_chunk)); // TODO: Handle this better
-    game_info.game_name_pointer = read_safe((u_int32_t*&)reader, gen8_chunk)-4;
+    game_info.game_name_pointer = read_safe((u_int32_t*&)reader, gen8_chunk);
     game_info.major_version = read_safe((u_int32_t*&)reader, gen8_chunk);
     game_info.minor_version = read_safe((u_int32_t*&)reader, gen8_chunk);
     game_info.release = read_safe((u_int32_t*&)reader, gen8_chunk);
@@ -110,7 +109,7 @@ void load_game_info(Chunk* gen8_chunk) {
     game_info.info_flags = read_safe((u_int32_t*&)reader, gen8_chunk);
     reader += 20; // TODO: Handle licenses and all that
     game_info.timestamp = read_safe((u_int64_t*&)reader, gen8_chunk);
-    game_info.display_name_pointer = read_safe((u_int32_t*&)reader, gen8_chunk)-4;
+    game_info.display_name_pointer = read_safe((u_int32_t*&)reader, gen8_chunk);
     game_info.active_targets = read_safe((u_int64_t*&)reader, gen8_chunk);
     game_info.function_classifications = read_safe((u_int64_t*&)reader, gen8_chunk);
     reader += 4; // TODO: Handle Steam ID

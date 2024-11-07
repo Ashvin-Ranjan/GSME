@@ -8,6 +8,8 @@ set(CMAKE_CXX_FLAGS_DEBUG  "-g")
 
 add_executable(gmse src/main.cpp
     src/chunk/chunk.cpp
-    src/string_chunk/string_chunk.cpp
-    src/gen8_chunk/gen8_chunk.cpp)
+    src/strg_chunk/strg_chunk.cpp
+    src/gen8_chunk/gen8_chunk.cpp
+    src/glob_chunk/glob_chunk.cpp
+)
 target_include_directories(gmse PUBLIC src)
