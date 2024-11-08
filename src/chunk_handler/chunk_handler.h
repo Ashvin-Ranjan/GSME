@@ -2,6 +2,7 @@
 #define GMSE_CHUNK_HANDLER_H
 
 #include "chunk/chunk.h"
+#include "audo_chunk/audo_chunk.h"
 #include "code_chunk/bytecode.h"
 #include "code_chunk/code_chunk.h"
 #include "gen8_chunk/gen8_chunk.h"

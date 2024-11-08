@@ -13,11 +13,11 @@ std::vector<Chunk> locate_chunks(u_int8_t* data, u_int32_t size) {
 
     Chunk form = {
         { (char)data[0], (char)data[1], (char)data[2], (char)data[3] },
-        *((u_int32_t*)data + 1),
+        *((u_int32_t*)data + 1) + 8,
         data,
     };
 
-    if (form.size + 8 != size) {
+    if (form.size != size) {
         throw std::invalid_argument("Malformed FORM chunk: Invalid size");
     }
 
@@ -29,14 +29,14 @@ std::vector<Chunk> locate_chunks(u_int8_t* data, u_int32_t size) {
     while (offset < size - 8) { // It is size - 8 because 8 bytes are read from the start
         Chunk chunk = {
             { (char)data[0], (char)data[1], (char)data[2], (char)data[3] },
-            *((u_int32_t*)data + 1),
+            *((u_int32_t*)data + 1) + 8,
             data,
         };
 
         chunks.push_back(chunk);
 
-        data += chunk.size + 8;
-        offset += chunk.size + 8;
+        data += chunk.size;
+        offset += chunk.size;
     }
 
     return chunks;

@@ -18,7 +18,7 @@ void load_bytecode(u_int32_t offset, u_int32_t length) {
         reader++;
     }
     ByteCode bc = ByteCode{
-        data_pointer,
+        data_pointer - length,
         length,
     };
     bytecode_map[offset] = bc;

@@ -40,6 +40,9 @@ int main(int argc, const char * argv[]) {
         if (compare_ident(c.ident, "LANG")) {
             load_languages(&c);
         }
+        if (compare_ident(c.ident, "AUDO")) {
+            load_audio_data(&c);
+        }
     }
     print_game_info(true);
     for (u_int32_t i : global_code_entry) {
@@ -52,8 +55,9 @@ int main(int argc, const char * argv[]) {
     data_file = NULL;
 
     // Make sure this is called to avoid issues
-    // this frees up allocated memory for bytecodes
+    // this frees up allocated memory
     free_bytecode_data();
+    free_audio_data();
 
     return 0;
 }
