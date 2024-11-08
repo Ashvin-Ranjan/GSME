@@ -69,7 +69,7 @@ struct ByteCode {
     u_int32_t length;
 };
 
-extern std::unordered_map<u_int32_t, ByteCode*> bytecode_map;
+extern std::unordered_map<u_int32_t, ByteCode> bytecode_map;
 
 void free_bytecode_data();
 

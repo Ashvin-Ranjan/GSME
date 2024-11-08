@@ -1,12 +1,11 @@
-#include "bytecode.h"
-#include "../main.h"
+#include "../chunk_handler.h"
+#include "../../main.h"
 
-std::unordered_map<u_int32_t, ByteCode*> bytecode_map;
+std::unordered_map<u_int32_t, ByteCode> bytecode_map;
 
 void free_bytecode_data() {
-    for (std::pair<u_int32_t, ByteCode*> bc : bytecode_map) {
-        delete[] bc.second->data;
-        delete bc.second;
+    for (std::pair<u_int32_t, ByteCode> bc : bytecode_map) {
+        delete[] bc.second.data;
     }
 }
 
@@ -18,7 +17,7 @@ void load_bytecode(u_int32_t offset, u_int32_t length) {
         data_pointer++;
         reader++;
     }
-    ByteCode* bc = new ByteCode{
+    ByteCode bc = ByteCode{
         data_pointer,
         length,
     };

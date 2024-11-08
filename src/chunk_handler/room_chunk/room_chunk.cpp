@@ -1,6 +1,6 @@
-#include "room_chunk.h"
-#include "../main.h"
-#include "../utils/utils.h"
+#include "../chunk_handler.h"
+#include "../../main.h"
+#include "../../utils/utils.h"
 
 // TODO: There is some sort of format check to be aware of
 

@@ -1,11 +1,6 @@
 #include "main.h"
 
-#include "chunk/chunk.h"
-#include "strg_chunk/strg_chunk.h"
-#include "gen8_chunk/gen8_chunk.h"
-#include "glob_chunk/glob_chunk.h"
-#include "code_chunk/bytecode.h"
-#include "code_chunk/code_chunk.h"
+#include "chunk_handler/chunk_handler.h"
 
 GlobalGameData global_data;
 

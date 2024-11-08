@@ -1,7 +1,7 @@
 #ifndef GMSE_UTILS_H
 #define GMSE_UTILS_H
 
-#include "../chunk/chunk.h"
+#include "../chunk_handler/chunk_handler.h"
 #include "../main.h"
 
 #include <format>

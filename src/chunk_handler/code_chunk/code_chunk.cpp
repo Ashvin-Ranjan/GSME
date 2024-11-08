@@ -1,8 +1,6 @@
-#include "code_chunk.h"
-#include "bytecode.h"
-#include "../main.h"
-#include "../utils/utils.h"
-#include "../gen8_chunk/gen8_chunk.h"
+#include "../chunk_handler.h"
+#include "../../main.h"
+#include "../../utils/utils.h"
 
 GameCode load_code(u_int32_t offset, Chunk* code_chunk) {
     if (!compare_ident(code_chunk->ident, "CODE")) {

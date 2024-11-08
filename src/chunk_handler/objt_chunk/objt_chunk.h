@@ -1,5 +1,5 @@
 #ifndef GMSE_OBJT_CHUNK_H
-#define GMSE_OJBT_CHUNK_H
+#define GMSE_OBJT_CHUNK_H
 
 #include "../chunk/chunk.h"
 

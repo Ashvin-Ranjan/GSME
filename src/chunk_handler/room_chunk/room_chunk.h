@@ -7,7 +7,7 @@
 struct Background {
     u_int32_t background_id;
     u_int32_t x; u_int32_t y;
-    u_int32_t speed_x; u_int32_t y;
+    u_int32_t speed_x; u_int32_t speed_y;
     u_int32_t tile_x; u_int32_t tile_y;
     bool enabled;
     bool foreground;

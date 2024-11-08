@@ -1,4 +1,4 @@
-#include "chunk.h"
+#include "../chunk_handler.h"
 
 // Format information taken from: https://github.com/panzi/cook-serve-hoomans/blob/master/fileformat.md
 
