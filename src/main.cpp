@@ -4,6 +4,8 @@
 #include "strg_chunk/strg_chunk.h"
 #include "gen8_chunk/gen8_chunk.h"
 #include "glob_chunk/glob_chunk.h"
+#include "code_chunk/bytecode.h"
+#include "code_chunk/code_chunk.h"
 
 GlobalGameData global_data;
 
@@ -50,6 +52,10 @@ int main(int argc, const char * argv[]) {
     // Free file data from memory when done
     free(data_file);
     data_file = NULL;
+
+    // Make sure this is called to avoid issues
+    // this frees up allocated memory for bytecodes
+    free_bytecode_data();
 
     return 0;
 }
