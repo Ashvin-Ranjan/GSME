@@ -1,8 +1,7 @@
 #ifndef GMSE_ROOM_CHUNK_H
 #define GMSE_ROOM_CHUNK_H
 
-#include "../chunk/chunk.h"
-#include "../objt_chunk/objt_chunk.h"
+#include "../chunk_handler.h"
 
 struct Background {
     u_int32_t background_id;

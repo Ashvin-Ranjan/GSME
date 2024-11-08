@@ -1,7 +1,7 @@
 #ifndef GMSE_CODE_CHUNK_H
 #define GMSE_CODE_CHUNK_H
 
-#include "../chunk/chunk.h"
+#include "../chunk_handler.h"
 
 struct GameCode {
     u_int32_t name_pointer;

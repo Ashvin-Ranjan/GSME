@@ -37,6 +37,9 @@ int main(int argc, const char * argv[]) {
         if (compare_ident(c.ident, "GLOB")) {
             load_global_entries(&c);
         }
+        if (compare_ident(c.ident, "LANG")) {
+            load_languages(&c);
+        }
     }
     print_game_info(true);
     for (u_int32_t i : global_code_entry) {

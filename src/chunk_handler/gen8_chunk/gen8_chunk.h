@@ -1,7 +1,7 @@
 #ifndef GMSE_GEN8_CHUNK_H
 #define GMSE_GEN8_CHUNK_H
 
-#include "../chunk/chunk.h"
+#include "../chunk_handler.h"
 
 struct GameInfo {
     std::vector<u_int32_t> room_order;

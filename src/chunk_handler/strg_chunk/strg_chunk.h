@@ -1,7 +1,7 @@
 #ifndef GMSE_STRING_CHUNK_H
 #define GMSE_STRING_CHUNK_H
 
-#include "../chunk/chunk.h"
+#include "../chunk_handler.h"
 
 #include <unordered_map>
 

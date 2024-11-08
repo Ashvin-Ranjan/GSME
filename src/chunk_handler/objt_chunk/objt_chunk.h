@@ -1,7 +1,7 @@
 #ifndef GMSE_OBJT_CHUNK_H
 #define GMSE_OBJT_CHUNK_H
 
-#include "../chunk/chunk.h"
+#include "../chunk_handler.h"
 
 struct PhysicsVertex {
     float x; float y;
