@@ -17,5 +17,5 @@ Room read_room(u_int32_t offset, Chunk* room_chunk) {
     room.draw_background_color = read_safe((bool*&)reader, room_chunk) == 1;
     room.creation_code_id = read_safe((u_int32_t*&)reader, room_chunk);
     room.flags = read_safe((u_int32_t*&)reader, room_chunk);
-
+    // TODO: Load game objects
 }

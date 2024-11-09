@@ -14,6 +14,7 @@ add_executable(gmse src/main.cpp
     src/chunk_handler/gen8_chunk/gen8_chunk.cpp
     src/chunk_handler/glob_chunk/glob_chunk.cpp
     src/chunk_handler/lang_chunk/lang_chunk.cpp
+    src/chunk_handler/scpt_chunk/scpt_chunk.cpp
     src/chunk_handler/strg_chunk/strg_chunk.cpp
 )
 target_include_directories(gmse PUBLIC src)

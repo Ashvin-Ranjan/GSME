@@ -43,6 +43,9 @@ int main(int argc, const char * argv[]) {
         if (compare_ident(c.ident, "AUDO")) {
             load_audio_data(&c);
         }
+        if (compare_ident(c.ident, "SCPT")) {
+            load_script_data(&c);
+        }
     }
     print_game_info(true);
     for (u_int32_t i : global_code_entry) {
