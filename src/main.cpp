@@ -17,7 +17,7 @@ int main(int argc, const char * argv[]) {
     long fsize = ftell(f);
     fseek(f, 0, SEEK_SET);
 
-    u_int8_t *data_file = (u_int8_t*)malloc(fsize + 1);
+    u_int8_t* data_file = new u_int8_t[fsize + 1];
     fread(data_file, fsize, 1, f);
     fclose(f);
 
@@ -48,13 +48,9 @@ int main(int argc, const char * argv[]) {
         }
     }
     print_game_info(true);
-    for (u_int32_t i : global_code_entry) {
-        printf("%u ", i);
-    }
-    printf("\n");
-
+    
     // Free file data from memory when done
-    free(data_file);
+    delete[] data_file;
     data_file = NULL;
 
     // Make sure this is called to avoid issues

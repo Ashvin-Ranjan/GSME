@@ -7,6 +7,7 @@ std::unordered_map<u_int32_t, Audio> audio_map;
 void free_audio_data() {
     for (std::pair<u_int32_t, Audio> bc : audio_map) {
         delete[] bc.second.data;
+        bc.second.data = NULL;
     }
 }
 

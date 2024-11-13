@@ -15,7 +15,6 @@ void load_script_data(Chunk* script_chunk) {
 
     for (int i = 0; i < length; i++) {
         u_int32_t loc = read_safe(reader, script_chunk);
-        printf("%i, %x\n", i, loc);
         script_map[loc] = load_script(loc, script_chunk);
     }
 }

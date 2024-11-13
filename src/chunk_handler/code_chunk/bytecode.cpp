@@ -6,6 +6,7 @@ std::unordered_map<u_int32_t, ByteCode> bytecode_map;
 void free_bytecode_data() {
     for (std::pair<u_int32_t, ByteCode> bc : bytecode_map) {
         delete[] bc.second.data;
+        bc.second.data = NULL;
     }
 }
 
