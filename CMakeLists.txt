@@ -6,7 +6,9 @@ set (CMAKE_CXX_STANDARD 20)
 set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_CXX_FLAGS_DEBUG  "-g")
 
-add_executable(gmse src/main.cpp
+add_executable(gmse
+    src/main.cpp
+    src/runner/disassembler/disassembler.cpp
     src/chunk_handler/chunk/chunk.cpp
     src/chunk_handler/audo_chunk/audo_chunk.cpp
     src/chunk_handler/code_chunk/code_chunk.cpp
